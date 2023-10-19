@@ -1,0 +1,11 @@
+manifest:
+/Users/santanna/AndroidStudioProjects/ProtegoMaxima/app/src/main
+
+XML files:
+/Users/santanna/AndroidStudioProjects/ProtegoMaxima/app/src/main/res/layout
+
+Java Files:
+/Users/santanna/AndroidStudioProjects/ProtegoMaxima/app/src/main/java/com/example/protegomaxima
+
+Gradle Files:
+/Users/santanna/AndroidStudioProjects/ProtegoMaxima/app/build.gradle.kts
