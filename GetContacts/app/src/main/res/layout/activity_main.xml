@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="#cfc2a9">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/almendra_bold_italic"
+        android:text="Welcome to my separate app for contacts because my computer is old and senile."
+        android:textSize="25sp"
+        android:gravity="center"
+        android:textColor="#55482f"
+        />
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <ImageView
+            android:id="@+id/imageViewTextView"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contacts with TextView"
+            android:layout_toEndOf="@id/imageViewTextView"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="80dp"
+            />
+    </RelativeLayout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <ImageView
+            android:id="@+id/imageViewListView"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            />
+
+        <TextView
+            android:id="@+id/listView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contacts with TextView"
+            android:layout_toEndOf="@id/imageViewListView"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="80dp"
+            />
+    </RelativeLayout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <ImageView
+            android:id="@+id/imageViewRecycleView"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            />
+
+        <TextView
+            android:id="@+id/recycleView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contacts with TextView"
+            android:layout_toEndOf="@id/imageViewRecycleView"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="80dp"
+            />
+    </RelativeLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
