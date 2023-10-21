@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#5d5d5d"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:background="#1a472a"
+        android:text="Welcome to Challenge 1 and 2\nEnjoy!"
+        android:fontFamily="@font/almendra_bold_italic"
+        android:textSize="30sp"
+        android:textColor="#aaaaaa"
+        />
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="130dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:hint="Which is the best house in hogwarts?"
+        android:fontFamily="@font/almendra_italic"
+        android:textSize="20sp"
+        android:textColorHint="#aaaaaa"
+        />
+    <Button
+        android:id="@+id/button"
+        android:layout_width="100dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:text="Submit"
+        android:fontFamily="@font/almendra_bold_italic"
+        android:backgroundTint="#1a472a"
+        />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_gravity="center">
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Like us on Fakebook!"
+            android:fontFamily="@font/almendra_bold_italic"
+            android:textSize="25sp"
+            android:textColor="#1a472a"
+            />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/textView"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:clickable="true"
+            />
+    </RelativeLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>
