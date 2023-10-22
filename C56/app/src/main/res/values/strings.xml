@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">C5&amp;6</string>
+
+    <string name="icon">https://cdn-icons-png.flaticon.com/512/3771/3771338.png</string>
+    <string name="noColumnCursor">Columns not found in cursor</string>
+    <string name="nullCursor">Cursor is null</string>
+    <string name="noData">No Data</string>
+
+</resources>
