@@ -15,4 +15,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "C5&6"
 include(":app")
- 

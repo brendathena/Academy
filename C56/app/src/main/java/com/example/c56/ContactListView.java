@@ -12,31 +12,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContactListView extends AppCompatActivity {
-
-    private ArrayAdapter<String> contactListAdapter;
+    private ArrayAdapter<String> listAdapter;
     private List<String> contactData;
-    private final String noColumnCursor = getResources().getString(R.string.noColumnCursor);
-    private final String nullCursor = getResources().getString(R.string.nullCursor);
 
+    private String noColumn;
+    private String nullCursor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_list_view);
 
-        ListView contactListView = findViewById(R.id.contactListView);
+        noColumn = getResources().getString(R.string.noColumn);
+        nullCursor = getResources().getString(R.string.nullCursor);
+
+        ListView listView = findViewById(R.id.listView);
         contactData = new ArrayList<>();
-        contactListAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, contactData);
-        contactListView.setAdapter(contactListAdapter);
+        listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, contactData);
+        listView.setAdapter(listAdapter);
 
         displayContacts();
     }
 
     private void displayContacts(){
+        //Define the name and number columns you wish to gather
         String[] projection = {
                 ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
                 ContactsContract.CommonDataKinds.Phone.NUMBER
         };
-
+        //Query the contacts database
         Cursor cursor = getContentResolver().query(
                 ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
                 projection,
@@ -45,26 +48,33 @@ public class ContactListView extends AppCompatActivity {
                 null
         );
 
-        if (cursor != null) {
-            int displayNameIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
+        //Cursor null protection
+        if (cursor != null){
+            //Get column indexes
+            int nameIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
             int numberIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
 
-            if(displayNameIndex != -1 && numberIndex != -1){
-                while (cursor.moveToNext()){
-                    String name = cursor.getString(displayNameIndex);
+            //Columns null protection
+            if (nameIndex != -1 && numberIndex != -1){
+                while(cursor.moveToNext()){
+                    //get the strings from the column index and move to next rows
+                    String name = cursor.getString(nameIndex);
                     String number = cursor.getString(numberIndex);
-                    contactData.add(name + ": " + number);
+                    contactData.add(name + ": " + number); // Add contact information to the list
+                    //•
                 }
                 cursor.close();
 
-                contactListAdapter.notifyDataSetChanged();
-            }else {
-                contactListAdapter.clear();
-                contactListAdapter.add(noColumnCursor);
+                listAdapter.notifyDataSetChanged(); // Update the list view with the new data
+            } else {
+                // Null columns, clear the list and display a message
+                listAdapter.clear();
+                listAdapter.add(noColumn);
             }
         } else {
-            contactListAdapter.clear();
-            contactListAdapter.add(nullCursor);
+            // Null cursor, clear the list and display a message
+            listAdapter.clear();
+            listAdapter.add(nullCursor);
         }
     }
 }

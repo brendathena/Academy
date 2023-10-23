@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="8dp">
-    <TextView
-        android:id="@+id/contactNameTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp">
 
     <TextView
-        android:id="@+id/contactPhoneNumberTextView"
-        android:layout_width="match_parent"
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp" />
+        android:layout_weight="1"
+        android:fontFamily="@font/almendra_italic"
+        android:textSize="20sp"
+        android:textColor="#aaaaaa"
+        android:layout_marginEnd="10dp"
+        />
+
+    <TextView
+        android:id="@+id/number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:fontFamily="@font/almendra_italic"
+        android:textSize="20sp"
+        android:textColor="#aaaaaa"
+        />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

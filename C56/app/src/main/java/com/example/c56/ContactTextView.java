@@ -1,38 +1,37 @@
 package com.example.c56;
 
-import android.annotation.SuppressLint;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.database.Cursor;
 import android.widget.TextView;
-import androidx.appcompat.app.AppCompatActivity;
 
 public class ContactTextView extends AppCompatActivity {
 
-    private TextView contactListTextView;
-    private final String noColumnCursor = getResources().getString(R.string.noColumnCursor);
-    private final String nullCursor = getResources().getString(R.string.nullCursor);
+    private TextView textView;
+    private String noColumn;
+    private String nullCursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_text_view);
 
-        contactListTextView = findViewById(R.id.contactListTextView);
+        textView = findViewById(R.id.textView);
+        noColumn = getResources().getString(R.string.noColumn);
+        nullCursor = getResources().getString(R.string.nullCursor);
 
-        // Fetch and display contacts
+        //fetch and gather contacts
         displayContacts();
     }
-
-    @SuppressLint("SetTextI18n")
-    private void displayContacts() {
-        // Define the columns you want to retrieve from the Contacts database
+    private void displayContacts(){
+        //Define the name and number columns you wish to gather
         String[] projection = {
-                ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
-                ContactsContract.CommonDataKinds.Phone.NUMBER
+            ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
+            ContactsContract.CommonDataKinds.Phone.NUMBER
         };
-
-        // Query the Contacts database
+        //Query the contacts database
         Cursor cursor = getContentResolver().query(
                 ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
                 projection,
@@ -41,30 +40,31 @@ public class ContactTextView extends AppCompatActivity {
                 null
         );
 
-        // Check if the cursor is not null
-        if (cursor != null) {
-            // Check if the columns exist in the cursor's result set
-            int displayNameIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
+        //Cursor null protection
+        if (cursor != null){
+            //Get column indexes
+            int nameIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
             int numberIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
-
-            if (displayNameIndex != -1 && numberIndex != -1) {
+            //Columns null protection
+            if (nameIndex != -1 && numberIndex != -1){
+                //String build to append the output
                 StringBuilder contactList = new StringBuilder();
-                while (cursor.moveToNext()) {
-                    String name = cursor.getString(displayNameIndex);
+                while(cursor.moveToNext()){
+                    //get the strings from the column index and move to next rows
+                    String name = cursor.getString(nameIndex);
                     String number = cursor.getString(numberIndex);
-                    contactList.append(name).append(": ").append(number).append("\n");
+                    contactList.append("• " + name + ": " + number + "\n");
                 }
                 cursor.close();
-
-                // Display the contacts in the TextView
-                contactListTextView.setText(contactList.toString());
-            } else {
-                // Handle the case when columns don't exist
-                contactListTextView.setText(noColumnCursor);
+                //Display contacts
+                textView.setText(contactList.toString());
+            }else {
+                //Null columns
+                textView.setText(noColumn);
             }
-        } else {
-            // Handle the case when the cursor is null
-            contactListTextView.setText(nullCursor);
+        }else {
+            //Null cursor
+            textView.setText(nullCursor);
         }
     }
 }
